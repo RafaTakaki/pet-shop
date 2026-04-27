@@ -22,3 +22,15 @@ C:\Dev\Pet-refatorar\projeto-biblioteca\Library.Domain\obj\Debug\net9.0\Library.
 C:\Dev\Pet-refatorar\projeto-biblioteca\Library.Domain\obj\Debug\net9.0\refint\Library.Domain.dll
 C:\Dev\Pet-refatorar\projeto-biblioteca\Library.Domain\obj\Debug\net9.0\Library.Domain.pdb
 C:\Dev\Pet-refatorar\projeto-biblioteca\Library.Domain\obj\Debug\net9.0\ref\Library.Domain.dll
+C:\Dev\pet-shop\Library.Domain\bin\Debug\net9.0\Library.Domain.deps.json
+C:\Dev\pet-shop\Library.Domain\bin\Debug\net9.0\Library.Domain.dll
+C:\Dev\pet-shop\Library.Domain\bin\Debug\net9.0\Library.Domain.pdb
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.AssemblyInfoInputs.cache
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.AssemblyInfo.cs
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.csproj.CoreCompileInputs.cache
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.sourcelink.json
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.dll
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\refint\Library.Domain.dll
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\Library.Domain.pdb
+C:\Dev\pet-shop\Library.Domain\obj\Debug\net9.0\ref\Library.Domain.dll

@@ -1,0 +1,40 @@
+# Build results
+bin/
+obj/
+*.dll
+*.pdb
+
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# IDEs
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+publish/
+.publish/
+
+# Tests
+test-results/
+coverage/
+
+# Dependencies
+node_modules/
+packages/
+
+# Environment
+.env
+.env.local
+*.log

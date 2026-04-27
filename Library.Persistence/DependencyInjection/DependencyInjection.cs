@@ -35,6 +35,7 @@ namespace Library.Persistence.DependencyInjection
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IPetRepositorory, PetRepository>();
+            services.AddScoped<ICuidadoRepository, CuidadoRepository>();
             services.AddScoped<IGerenciadorTokenService, GerenciadorTokenService>();
             services.AddScoped<IEmailService, EmailService>();
 
