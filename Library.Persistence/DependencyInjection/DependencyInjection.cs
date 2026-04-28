@@ -53,18 +53,20 @@ namespace Library.Persistence.DependencyInjection
                 cm.MapMember(c => c.TipoUsuario)
                     .SetSerializer(new EnumSerializer<TipoUsuario>(BsonType.String));
             });
-            BsonClassMap.RegisterClassMap<Emprestimo>(cm =>
-            {
-                cm.AutoMap();
-                cm.MapMember(c => c.Status)
-                    .SetSerializer(new EnumSerializer<StatusEmprestimo>(BsonType.String));
-            });
-            BsonClassMap.RegisterClassMap<Reserva>(cm =>
-            {
-                cm.AutoMap();
-                cm.MapMember(c => c.Status)
-                    .SetSerializer(new EnumSerializer<StatusReserva>(BsonType.String));
-            });
+            
+            // TODO: Implementar classes Emprestimo e Reserva
+            // BsonClassMap.RegisterClassMap<Emprestimo>(cm =>
+            // {
+            //     cm.AutoMap();
+            //     cm.MapMember(c => c.Status)
+            //         .SetSerializer(new EnumSerializer<StatusEmprestimo>(BsonType.String));
+            // });
+            // BsonClassMap.RegisterClassMap<Reserva>(cm =>
+            // {
+            //     cm.AutoMap();
+            //     cm.MapMember(c => c.Status)
+            //         .SetSerializer(new EnumSerializer<StatusReserva>(BsonType.String));
+            // });
         }
     }
 }
