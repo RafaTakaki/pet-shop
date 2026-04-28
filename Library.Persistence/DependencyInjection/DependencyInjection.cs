@@ -16,6 +16,7 @@ namespace Library.Persistence.DependencyInjection
 {
     public static class DependencyInjection
     {
+        // Fixed: Emprestimo and Reserva classes commented out - to be implemented
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
