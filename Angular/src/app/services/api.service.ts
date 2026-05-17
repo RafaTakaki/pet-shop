@@ -60,7 +60,17 @@ export class ApiService {
 
   buscaRacas(tipoPet: string): Observable<string[]> {
     const url = tipoPet === 'Cachorro' ? this.apiUrlCachorro : this.apiUrlGato;
-    return this.http.get<string[]>(url);
+    return this.http.get<any>(url).pipe(
+      map(response => {
+        if (tipoPet === 'Cachorro' && response?.RacaCachorros) {
+          return response.RacaCachorros.filter((raca: string | null) => !!raca) as string[];
+        }
+        if (tipoPet === 'Gato' && response?.RacaGatos) {
+          return response.RacaGatos.filter((raca: string | null) => !!raca) as string[];
+        }
+        return [] as string[];
+      })
+    );
   }
 
   buscapets(): Observable<CadastroPet[]> {
