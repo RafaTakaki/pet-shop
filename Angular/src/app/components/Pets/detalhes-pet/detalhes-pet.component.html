@@ -1,0 +1,24 @@
+<app-imagem-padrao />
+<span class="titulo-principal">Alterar Pet</span>
+
+<div class="wrap-input100 validate-input">
+	<label>Novo Nome:</label>
+	<input class="input100" [(ngModel)]="pet.nomePet" [value]="pet?.nomePet" />
+	<span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input">
+	<label>Nova Idade:</label>
+	<input class="input100" [(ngModel)]="pet.idadePet" [value]="pet?.idadePet" />
+	<span class="focus-input100"></span>
+</div>
+
+<div class="container-login100-form-btn">
+	<button class="login100-form-btn" (click)="salvar()">Salvar</button>
+</div>
+
+<div class="text-center p-t-90">
+	<a class="txt1" href="/meus-pets">
+		Voltar
+	</a>
+</div>

@@ -1,0 +1,202 @@
+
+
+.titulo-principal {
+  font-family: Poppins-Medium;
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+}
+
+.txt-voltar {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  color: #e5e5e5;
+  line-height: 1.5;
+}
+
+.container-lista-pets {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ffffff28;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.imagem-pet {
+  width: 55%;
+  height: 276px;
+  border: none;
+  margin-bottom: 0;
+  object-fit: cover;
+  padding: 0 10px 0px 0px ;
+  border-radius: 10px;
+}
+
+.texto-pet {
+  width: 45%;
+  height: 200px;
+  border: none;
+  margin-bottom: 10px;
+  object-fit: cover;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.imagem-pet img {
+  width: 100%; /* A imagem ocupará 100% da largura da div */
+  height: 100%; /* A altura será ajustada automaticamente para manter a proporção */
+  object-fit: cover;
+}
+
+.mega-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: none;
+  margin: 10px;
+  position:relative;
+  ;
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: hsl(34, 100%, 41%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: hsl(34, 100%, 31%);
+}
+
+.agendamentos-container {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+.container-pets {
+  display: flex;
+}
+@media (max-width: 640px) {
+  .container-pets {
+    display: flex;
+    flex-direction: column;  /* Faz a imagem ficar em cima do texto */
+    padding: 0; /* Para centralizar os elementos */
+    text-align: left;
+  }
+  .imagem-pet {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .texto-pet {
+    width: 100%;
+    
+    
+  }
+}
+
+
+.agendamentos-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Agendamento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Espaçamento entre os itens */
+}
+
+.agendamento-excluir {
+  margin-left: auto;
+  background: red;
+  padding: 4px;
+  z-index: 1;
+
+  border-radius: 5px;
+}
+
+/* .editar-botao {
+  width: 45%;
+  margin-right: auto;
+  z-index: 1;
+  
+  border-radius: 5px; 
+} */
+
+
+/* Alinhamento da div que contém os ícones */
+.icons {
+  display: flex;              
+  justify-content: flex-end;  
+  gap: 10px;                  
+  align-items: center;       
+  /* position: absolute;          */
+  top: 10px;                  
+  right: 10px;
+  left: 0px;                
+}
+
+/* Estilos do botão Excluir */
+.excluir-pet {
+  width: 50%;
+  background-color: #f44336;  /* Cor de fundo para excluir */
+  border: none;               /* Remove a borda */
+  color: white;               /* Cor do ícone */
+  font-size: 20px;            /* Tamanho do ícone */
+  cursor: pointer;           /* Aponta como link */
+  padding: 10px;              /* Espaçamento interno */      /* Faz o botão ficar redondo */
+  display: flex;              /* Flexbox para centralizar o ícone */
+  justify-content: center;    /* Centraliza horizontalmente */
+  align-items: center;        /* Centraliza verticalmente */
+}
+
+.excluir-pet:hover {
+  background-color: #d32f2f;  /* Escurece a cor de fundo no hover */
+}
+
+/* Estilos do botão Editar */
+.editar-botao {
+  width: 50%;
+  background-color: #4CAF50;  /* Cor de fundo verde para editar */
+  padding: 10px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.editar-botao button:hover {
+  background-color: #388E3C;  /* Escurece a cor de fundo no hover */
+}

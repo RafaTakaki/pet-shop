@@ -1,0 +1,62 @@
+<app-imagem-padrao />
+
+<form (ngSubmit)="onSubmit()" class="login100-form validate-form">
+
+    <span class="login100-form-title p-b-34 p-t-27">
+        Cadastrar novo Agendamento
+    </span>
+
+
+    <div class="wrap-input100 validate-input">
+
+
+        <select class="input100" matNativeControl [(ngModel)]="nomePet" name="nomePet" required>
+            <option value="" disabled selected>Selecione o Pet:</option>
+            <option *ngFor="let pet of nomePets" [value]="pet">{{ pet }}</option>
+        </select>
+
+
+
+
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        <select class="input100" [(ngModel)]="servico" name="Servico" required>
+            <option value="" disabled selected>Selecione o serviço:</option>
+            <option value="Banho e tosa">Banho e tosa</option>
+            <option value="Consulta Veterinaria">Consulta Veterinária</option>
+            <option value="Vacinação">Vacinação</option>
+            <option value="Outro">Outro</option>
+        </select>
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        <input class="input100" type="date" value=""  [min]="dataMinima" [(ngModel)]="data" name="Data" placeholder="Data da consulta:" required />
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        <input class="input100" type="text" [(ngModel)]="observacao" name="Observacao" placeholder="Observação:"
+            required />
+    </div>
+
+    <div class="container-login100-form-btn">
+        <button type="submit" class="login100-form-btn">
+            Cadastrar Agendamento
+        </button>
+    </div>
+</form>
+
+
+
+<div class="icone-frontpage">
+    <a class="icone-frontpage" href="/front-page">
+        Voltar
+    </a>
+</div>
+
+<div *ngIf="mensagem" [ngClass]="{'mensagem-feedback': true, 'error': isError}">
+	{{ mensagem }}
+</div>

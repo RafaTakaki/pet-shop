@@ -1,0 +1,38 @@
+<app-imagem-padrao />
+
+<form (ngSubmit)="onSubmit()" class="login100-form validate-form">
+
+
+	<span class="login100-form-title p-b-34 p-t-27">
+		Criar Nova Conta
+	</span>
+
+	<div class="wrap-input100 validate-input" data-validate="Enter email">
+		<input class="input100" type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+		<span class="focus-input100" data-placeholder="✉️"></span>
+	</div>
+
+	<div class="wrap-input100 validate-input" data-validate="Enter senha">
+		<input class="input100" type="password" [(ngModel)]="senha" name="senha" placeholder="Senha" required />
+		<span class="focus-input100" data-placeholder="🔑"></span>
+	</div>
+
+	<div class="wrap-input100 validate-input" data-validate="Enter nome">
+		<input class="input100" type="text" [(ngModel)]="nome" name="nome" placeholder="Nome" required />
+		<span class="focus-input100" data-placeholder="👤"></span>
+	</div>
+
+	<div class="container-login100-form-btn">
+		<button type="submit" class="login100-form-btn">Criar Conta</button>
+	</div>
+</form>
+
+<div class="text-center p-t-90">
+	<a class="txt1" href="">
+		Voltar para o Login
+	</a>
+</div>
+
+<div *ngIf="mensagem" class="mensagem-feedback">
+	{{ mensagem }}
+</div>

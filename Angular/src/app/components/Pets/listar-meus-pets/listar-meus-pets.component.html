@@ -1,0 +1,59 @@
+<app-imagem-padrao />
+<span class="titulo-principal">Meus Pets</span>
+
+<select class="Agendamento" [(ngModel)]="petFiltrado">
+  <option class="Agendamento" value="">Todos</option>
+  <option class="Agendamento" *ngFor="let tipo of tiposDePets" [value]="tipo">{{ tipo }}</option>
+</select>
+
+<div class="container-lista-pets" *ngFor="let pet of pets | filterByTipo: petFiltrado">
+  <div class="mega-container">
+
+    
+    <div class="container-pets">
+      <div class="imagem-pet">
+        <img [src]="pet.imagem" alt="Imagem do Pet" />
+      </div>
+      
+      <div class="texto pet">
+        <div class="icons">
+          
+          
+          <button class="editar-botao" [routerLink]="['/pet', pet.nomePet]">🔧</button>
+          
+          
+          <button class="excluir-pet" (click)="excluirPet(pet.id)">🗑️</button>
+    
+    
+        </div>
+        <p><strong>Nome do Pet: </strong> {{ pet.nomePet }}</p>
+        <p><strong>Tipo do Pet: </strong> {{ pet.tipoPet }}</p>
+        <p><strong>Idade do Pet: </strong> {{ pet.idadePet }} meses</p>
+        <p><strong>Raça: </strong> {{ pet.raca }}</p>
+        <p><strong>Sexo: </strong> {{ pet.sexo }}</p>
+        <div class="button-container">
+          <button (click)="mostrarAgendamentos(pet.nomePet)">
+            {{ petSelecionado === pet.nomePet ? 'Recolher' : 'Listar Agendamentos' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="agendamentos-container" *ngIf="petSelecionado === pet.nomePet">
+      <h3>Agendamentos de {{ petSelecionado }}</h3>
+      <ul>
+        <li class="Agendamento" *ngFor="let agendamento of agendamentos">
+          <span>{{ agendamento.data | date:'dd/MM/yyyy' }} - {{ agendamento.servico }}</span>
+          <div class="agendamento-excluir" style="margin-left: auto;">
+            <button class="agendamento-excluir" (click)="excluirAgendamento(agendamento.id)">🗑️</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <a class="txt-voltar" href="/listar-meus-pets">Voltar</a>
+</div>

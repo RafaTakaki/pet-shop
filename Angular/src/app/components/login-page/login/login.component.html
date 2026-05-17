@@ -1,0 +1,46 @@
+<app-imagem-padrao />
+<form class="login100-form validate-form" (ngSubmit)="onSubmit()">
+
+	<span class="login100-form-title p-b-34 p-t-27">
+		Log in
+	</span>
+
+
+	<div class="wrap-input100 validate-input">
+		<i class="fas fa-envelope"></i>
+		<input class="input100" type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+		<span class="focus-input100" data-placeholder="✉️"></span>
+	</div>
+
+	<div class="wrap-input100 validate-input">
+		<input class="input100" type="password" [(ngModel)]="password" name="password" placeholder="Senha" required />
+		<span class="focus-input100" data-placeholder="🔑"></span>
+	</div>
+
+	<div class="container-login100-form-btn">
+		<button class="login100-form-btn" type="submit">Login</button>
+	</div>
+
+	<div *ngIf="mensagem" class="error-message">
+		{{ mensagem }}
+	</div>
+
+
+
+	<div class="text-center p-t-90">
+		<a class="txt1" href="recuperar-senha">
+			Esqueceu a Senha
+		</a>
+	</div>
+
+
+	<div class="text-center p-t-90">
+		<a class="txt1" href="criar-conta">
+			Criar nova Conta
+		</a>
+	</div>
+
+
+
+
+</form>

@@ -1,0 +1,31 @@
+<app-imagem-padrao />
+<span class="login100-form-title p-b-34 p-t-27">
+	Notificações
+</span>
+
+<div class="mega-container">
+    <div class="container-mensagens" *ngFor="let notificacao of notificacoes">
+        <div class="texto notificacao">
+            <h3><strong>Titulo: </strong> {{ notificacao.titulo }}</h3>
+            <p><strong>Descricao: </strong> {{ notificacao.descricao }}</p>
+            <p><strong>Data da Notificação: </strong> {{ notificacao.dataNotificacao }}</p>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <div class="mensagem-sem-notificacoes" *ngIf="!notificacoes || notificacoes.length === 0">
+        Não há notificações disponíveis ou o recurso ainda não está implementado no backend.
+    </div>
+
+</div>
+
+<div class="text-center p-t-90">
+	<a class="txt1" href="/front-page">
+		Voltar
+	</a>
+</div>

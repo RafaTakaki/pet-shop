@@ -1,0 +1,45 @@
+<div class="notificacao">
+	<span class="numero-notificacoes" *ngIf="numeroDeNotificacoes > 0">{{ numeroDeNotificacoes }}</span>
+	<a class="notificacao-botao" href="/notificacoes">
+		✉️
+	</a>
+</div>
+
+
+<app-imagem-padrao />
+
+
+<span class="login100-form-title p-b-34 p-t-27">
+	Bem Vindo !
+</span>
+
+<div class="icone-frontpage">
+	<a class="icone-frontpage" href="/cadastro-pet">
+		Cadastrar Pet
+	</a>
+</div>
+
+<div class="icone-frontpage">
+	<a class="icone-frontpage" href="/meus-pets">
+		Listar meus Pets
+	</a>
+</div>
+
+<div class="icone-frontpage">
+	<a class="icone-frontpage" href="/cadastro-agendamento">
+		Cadastrar agendamento
+	</a>
+</div>
+
+<!-- <div class="icone-frontpage">
+	<a class="icone-frontpage" href="/listar-meus-agendamentos">
+		Verificar meus Agendamentos
+	</a>
+</div> -->
+
+
+<div class="text-center p-t-90">
+	<a class="icone-frontpage" href="/login">
+		<button class="icone-frontpage"(click)="logout()">Sair</button>
+	</a>
+</div>

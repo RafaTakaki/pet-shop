@@ -1,0 +1,26 @@
+.imagelogin{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    
+  }
+  .login100-form-logo {
+    font-size: 60px; 
+    color: #333333;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 auto;
+  }
