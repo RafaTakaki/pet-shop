@@ -34,6 +34,10 @@ coverage/
 node_modules/
 packages/
 
+# Angular / frontend build artifacts
+dist/
+**/dist/
+
 # Environment
 .env
 .env.local
