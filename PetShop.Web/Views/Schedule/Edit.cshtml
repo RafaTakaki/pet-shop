@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Editar Agendamento";
+}
+
+<h2 class="mb-4">Editar Agendamento</h2>
+
+<form>
+
+    <div class="mb-3">
+        <label class="form-label">Pet</label>
+        <select class="form-select">
+            <option>Rex</option>
+            <option>Luna</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Serviço</label>
+        <select class="form-select">
+            <option>Banho</option>
+            <option>Tosa</option>
+            <option>Banho e Tosa</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Data</label>
+        <input type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Horário</label>
+        <select class="form-select">
+            <option>09:00</option>
+            <option>10:00</option>
+            <option>14:00</option>
+            <option>16:00</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary">Atualizar</button>
+    <a href="/Schedule" class="btn btn-secondary">Cancelar</a>
+
+</form>
