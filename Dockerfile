@@ -27,7 +27,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 
 WORKDIR /app
 COPY --from=build /app/publish .
-COPY --from=frontend /src/Angular/dist/desafio-teste ./wwwroot
+# Copy the browser build (contains index.html) into wwwroot
+COPY --from=frontend /src/Angular/dist/desafio-teste/browser ./wwwroot
 
 # Ensure ASP.NET listens on the port provided by Cloud Run
 ENV ASPNETCORE_URLS=http://+:8080
