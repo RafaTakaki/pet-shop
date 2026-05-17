@@ -29,6 +29,9 @@ WORKDIR /app
 COPY --from=build /app/publish .
 COPY --from=frontend /src/Angular/dist/desafio-teste ./wwwroot
 
+# Ensure ASP.NET listens on the port provided by Cloud Run
+ENV ASPNETCORE_URLS=http://+:8080
+
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD dotnet --version
