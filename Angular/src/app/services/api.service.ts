@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { forkJoin, Observable, of, switchMap } from 'rxjs';
+import { forkJoin, Observable, of, switchMap, map } from 'rxjs';
 import { CadastroPet } from '../models/cadastro-pet';
 import { Agendamento } from '../models/agendamentos';
 import { Notificacao } from '../models/notificacao';
