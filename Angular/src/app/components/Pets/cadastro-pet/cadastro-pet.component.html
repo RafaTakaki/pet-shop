@@ -31,7 +31,7 @@
 
 	<div class="wrap-input100 validate-input">
 		<select class="input100" [(ngModel)]="raca" name="raca" required>
-			<option value="" disabled selected>Selecione a raça:</option>
+			<option value="" disabled selected>Selecione a raça::</option>
 			<option *ngFor="let raca of racas; trackBy: trackByIndex" [value]="raca">{{ raca }}</option>
 		</select>
 		<span class="focus-input100"></span>
