@@ -43,7 +43,7 @@
       <h3>Agendamentos de {{ petSelecionado }}</h3>
       <ul>
         <li class="Agendamento" *ngFor="let agendamento of agendamentos">
-          <span>{{ agendamento.data | date:'dd/MM/yyyy' }} - {{ agendamento.servico }}</span>
+          <span>{{ agendamento.dataServico | date:'dd/MM/yyyy' }} - {{ agendamento.tipoServico }}</span>
           <div class="agendamento-excluir" style="margin-left: auto;">
             <button class="agendamento-excluir" (click)="excluirAgendamento(agendamento.id)">🗑️</button>
           </div>

@@ -81,16 +81,21 @@ export class ListarMeusPetsComponent implements OnInit {
 
 
 
-  listarAgendamentosPorPet(nomePet: string) {
-    this.api.buscaAgendamentosPorPet(nomePet).subscribe((data) => {
-      this.agendamentos = data;
-      console.log(this.agendamentos);
-    },
-      error => {
+listarAgendamentosPorPet(nomePet: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    this.api.buscaAgendamentosPorPet(nomePet).subscribe(
+      (data) => {
+        this.agendamentos = data;
+        console.log(this.agendamentos);
+        resolve();
+      },
+      (error) => {
         console.log('Erro ao buscar agendamentos', error);
+        reject(error);
       }
     );
-  }
+  });
+}
 
 
 
