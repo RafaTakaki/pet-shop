@@ -61,16 +61,20 @@ export class CadastroPetComponent {
   }
 
   onTipoPetChange() {
+    console.log('onTipoPetChange chamado com tipoPet:', this.tipoPet);
     if (this.tipoPet) {
       this.apiService.buscaRacas(this.tipoPet).subscribe(
         (data) => {
+          console.log('Raças recebidas:', data);
           this.racas = data; // Atualiza as raças conforme o tipo do pet
         },
         (error) => {
           console.error('Erro ao carregar raças', error);
+          this.racas = []; // Limpa a lista em caso de erro
         }
       );
     } else {
+      console.log('Nenhum tipo de pet selecionado');
       this.racas = []; // Limpa a lista se nenhum tipo for selecionado
     }
   }
