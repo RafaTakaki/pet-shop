@@ -61,30 +61,32 @@ export class CadastroPetComponent {
       });
   }
 
-  onTipoPetChange() {
-    console.log('onTipoPetChange chamado com tipoPet:', this.tipoPet);
-    this.raca = ''; // Limpa a seleção anterior
+onTipoPetChange() {
+  console.log('onTipoPetChange chamado com tipoPet:', this.tipoPet);
+  this.raca = ''; // Limpa a seleção anterior
+  this.racas = []; // Limpa a lista na tela antes de carregar a nova
+
+  if (this.tipoPet) {
+    this.isLoadingRacas = true;
     
-    if (this.tipoPet) {
-      this.isLoadingRacas = true;
-      this.apiService.buscaRacas(this.tipoPet).subscribe(
-        (data) => {
-          console.log('Raças recebidas no componente:', data);
-          this.racas = data || [];
-          this.isLoadingRacas = false;
-          console.log('Raças atribuídas ao array:', this.racas);
-        },
-        (error) => {
-          console.error('Erro ao carregar raças', error);
-          this.racas = [];
-          this.isLoadingRacas = false;
-        }
-      );
-    } else {
-      console.log('Nenhum tipo de pet selecionado');
-      this.racas = [];
-    }
+    this.apiService.buscaRacas(this.tipoPet).subscribe({
+      next: (dadosMapeados: string[]) => {
+        // Como o serviço já tratou o objeto, 'dadosMapeados' já é o array direto de strings
+        this.racas = dadosMapeados;
+        this.isLoadingRacas = false;
+        console.log('Raças prontas para o HTML:', this.racas);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar raças no componente:', error);
+        this.racas = [];
+        this.isLoadingRacas = false;
+      }
+    });
+  } else {
+    console.log('Nenhum tipo de pet selecionado');
+    this.racas = [];
   }
+}
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
