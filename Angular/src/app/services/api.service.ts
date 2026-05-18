@@ -58,14 +58,15 @@ export class ApiService {
     return this.http.post<string>(url, body, { headers: headers, responseType: 'text' as 'json' });
   }
 
-  buscaRacas(tipoPet: string): Observable<string[]> {
-    const t = (tipoPet || '').toLowerCase();
-    const isDog = t.includes('cachorro') || t.includes('dog') || t.includes('cachorros') || t.includes('Cachorros');
-    const isCat = t.includes('gato') || t.includes('cat');
-    const url = isDog ? this.apiUrlCachorro : (isCat ? this.apiUrlGato : this.apiUrlGato);
-    return this.http.get<string[]>(url);
-  }
+buscaRacas(tipoPet: string): Observable<string[]> {
+  const t = (tipoPet || '').toLowerCase();
+  const isDog = t.includes('cachorro') || t.includes('dog');
+  const url = isDog ? this.apiUrlCachorro : this.apiUrlGato;
 
+  return this.http.get<{ racaCachorros?: string[], racaGatos?: string[] }>(url).pipe(
+    map(data => data.racaCachorros ?? data.racaGatos ?? [])
+  );
+}
   buscapets(): Observable<CadastroPet[]> {
     const url = `${this.apiUrl}/Cuidado/PetsCadastrados`;
     return this.http.get<string[]>(url).pipe(
