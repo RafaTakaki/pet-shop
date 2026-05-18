@@ -62,8 +62,19 @@ export class ApiService {
     const t = (tipoPet || '').toLowerCase();
     const isDog = t.includes('Cachorro') || t.includes('dog');
     const isCat = t.includes('Gato') || t.includes('cat');
-    const url = isDog ? this.apiUrlCachorro : (isCat ? this.apiUrlGato : this.apiUrlGato);
-    return this.http.get<string[]>(url);
+    const url = isDog ? this.apiUrlCachorro : this.apiUrlGato;
+    
+    return this.http.get<any>(url).pipe(
+      map(response => {
+        // Extrai a lista correta baseado no tipo de pet
+        if (isDog) {
+          return response.racaCachorros || response.RacaCachorros || [];
+        } else if (isCat) {
+          return response.racaGatos || response.RacaGatos || [];
+        }
+        return [];
+      })
+    );
   }
 
   buscapets(): Observable<CadastroPet[]> {
