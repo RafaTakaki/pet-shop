@@ -175,7 +175,7 @@ public class PetController : ControllerBase
     Summary = "Deleta um pet pelo ID",
     Description = "Este método remove um pet do sistema com base no ID fornecido. Caso o pet não seja encontrado ou não seja possível realizar a exclusão, será retornado um erro informando a falha."
     )]
-    public async Task<IActionResult> Deletar(int id)
+    public async Task<IActionResult> Deletar(string id)
     {
         try
         {

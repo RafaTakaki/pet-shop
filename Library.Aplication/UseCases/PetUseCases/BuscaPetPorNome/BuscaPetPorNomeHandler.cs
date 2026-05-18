@@ -23,13 +23,8 @@ public class BuscaPetPorNomeHandler : IRequestHandler<BuscaPetPorNomeRequest, Bu
         }
 
         var (idUsuario, _) = await _gerenciadorTokenService.BuscarGuidTokenENome(request.Token);
-        
-        if (!int.TryParse(idUsuario, out int idUsuarioInt))
-        {
-            throw new Exception("ID do usuário inválido no token");
-        }
 
-        var pet = await _petRepository.BuscaObjetoPetUsuario(idUsuarioInt, request.NomePet);
+        var pet = await _petRepository.BuscaObjetoPetUsuario(idUsuario, request.NomePet);
         return new BuscaPetPorNomeResponse(pet);
     }
 }
