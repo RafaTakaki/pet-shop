@@ -12,7 +12,7 @@ public class PetRepository : IPetRepositorory
         _pets = database.GetCollection<PetEntity>("Pets");
     }
 
-    public async Task<PetEntity> BuscaObjetoPetUsuario(int idUsuario, string nome)
+    public async Task<PetEntity> BuscaObjetoPetUsuario(string idUsuario, string nome)
     {
         var filter = Builders<PetEntity>.Filter.And(
             Builders<PetEntity>.Filter.Eq(p => p.IdUsuario, idUsuario.ToString()),
@@ -21,7 +21,7 @@ public class PetRepository : IPetRepositorory
         return await _pets.Find(filter).FirstOrDefaultAsync();
     }
 
-    public async Task<List<string>> BuscaPetUsuario(int idUsuario)
+    public async Task<List<string>> BuscaPetUsuario(string idUsuario)
     {
         var filter = Builders<PetEntity>.Filter.Eq(p => p.IdUsuario, idUsuario.ToString());
         var pets = await _pets.Find(filter).ToListAsync();
@@ -41,7 +41,7 @@ public class PetRepository : IPetRepositorory
         }
     }
 
-    public async Task<bool> Delete(int id)
+    public async Task<bool> Delete(string id)
     {
         var result = await _pets.DeleteOneAsync(Builders<PetEntity>.Filter.Eq(p => p.Id, id.ToString()));
         return result.DeletedCount > 0;

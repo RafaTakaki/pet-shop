@@ -23,13 +23,8 @@ public class ListarPetsPorUsuarioHandler : IRequestHandler<ListarPetsPorUsuarioR
         }
 
         var (idUsuario, _) = await _gerenciadorTokenService.BuscarGuidTokenENome(request.Token);
-        
-        if (!int.TryParse(idUsuario, out int idUsuarioInt))
-        {
-            throw new Exception("ID do usuário inválido no token");
-        }
-
-        var nomesPets = await _petRepository.BuscaPetUsuario(idUsuarioInt);
+    
+        var nomesPets = await _petRepository.BuscaPetUsuario(idUsuario);
         return new ListarPetsPorUsuarioResponse(nomesPets);
     }
 }

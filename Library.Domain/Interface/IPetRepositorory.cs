@@ -10,9 +10,9 @@ public interface IPetRepositorory
     Task<List<PetEntity>> ListarCachorrosCadastrados();
     Task<List<PetEntity>> ListarGatosCadastrados();
 
-    Task<List<string>> BuscaPetUsuario(int idUsuario);
-    Task<PetEntity> BuscaObjetoPetUsuario(int idUsuario, string nome);
+    Task<List<string>> BuscaPetUsuario(string idUsuario);
+    Task<PetEntity> BuscaObjetoPetUsuario(string idUsuario, string nome);
 
-    Task<bool> Delete(int id);
+    Task<bool> Delete(string id);
 
 }
