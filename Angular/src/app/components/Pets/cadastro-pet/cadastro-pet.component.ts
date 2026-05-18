@@ -30,6 +30,7 @@ export class CadastroPetComponent {
   sexo: string = '';
   mensagem: string = '';
   racas: string[] = []; // Lista de raças para ser preenchida dinamicamente
+  isLoadingRacas: boolean = false;
 
   constructor(private apiService: ApiService, private router: Router) { }
   
@@ -66,17 +67,25 @@ export class CadastroPetComponent {
       this.apiService.buscaRacas(this.tipoPet).subscribe(
         (data) => {
           console.log('Raças recebidas:', data);
-          this.racas = data; // Atualiza as raças conforme o tipo do pet
+          setTimeout(() => {
+            this.racas = data; // Atualiza as raças conforme o tipo do pet
+          }, 0);
         },
         (error) => {
           console.error('Erro ao carregar raças', error);
-          this.racas = []; // Limpa a lista em caso de erro
+          setTimeout(() => {
+            this.racas = []; // Limpa a lista em caso de erro
+          }, 0);
         }
       );
     } else {
       console.log('Nenhum tipo de pet selecionado');
       this.racas = []; // Limpa a lista se nenhum tipo for selecionado
     }
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
   logout() {
     localStorage.removeItem('token');
