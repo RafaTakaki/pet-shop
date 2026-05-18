@@ -58,37 +58,13 @@ export class ApiService {
     return this.http.post<string>(url, body, { headers: headers, responseType: 'text' as 'json' });
   }
 
-buscaRacas(tipoPet: string): Observable<string[]> {
-  const t = (tipoPet || '').toLowerCase();
-  
-  // CORREÇÃO: Comparando com strings totalmente em minúsculo
-  const isDog = t.includes('cachorro') || t.includes('dog') || t.includes('cão');
-  const isCat = t.includes('gato') || t.includes('cat');
-  
-  const url = isDog ? this.apiUrlCachorro : this.apiUrlGato;
-  
-  console.log('buscaRacas - URL:', url, 'isDog:', isDog, 'isCat:', isCat);
-  
-  return this.http.get<any>(url).pipe(
-    map(response => {
-      console.log('Response completa recebida do backend:', response);
-      
-      let racas: string[] = [];
-      
-      if (isDog) {
-        racas = response?.racaCachorros || response?.RacaCachorros || [];
-      } else if (isCat) {
-        racas = response?.racaGatos || response?.RacaGatos || [];
-      } else {
-        // Caso o usuário digite algo diferente, tenta buscar em ambas propriedades por segurança
-        racas = response?.racaCachorros || response?.racaGatos || [];
-      }
-      
-      console.log('Array final mapeado e retornado:', racas);
-      return racas;
-    })
-  );
-}
+  buscaRacas(tipoPet: string): Observable<string[]> {
+    const t = (tipoPet || '').toLowerCase();
+    const isDog = t.includes('cachorro') || t.includes('dog') || t.includes('cachorros') || t.includes('Cachorros');
+    const isCat = t.includes('gato') || t.includes('cat');
+    const url = isDog ? this.apiUrlCachorro : (isCat ? this.apiUrlGato : this.apiUrlGato);
+    return this.http.get<string[]>(url);
+  }
 
   buscapets(): Observable<CadastroPet[]> {
     const url = `${this.apiUrl}/Cuidado/PetsCadastrados`;
