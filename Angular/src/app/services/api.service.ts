@@ -64,15 +64,24 @@ export class ApiService {
     const isCat = t.includes('Gato') || t.includes('cat');
     const url = isDog ? this.apiUrlCachorro : this.apiUrlGato;
     
+    console.log('buscaRacas - URL:', url, 'isDog:', isDog, 'isCat:', isCat);
+    
     return this.http.get<any>(url).pipe(
       map(response => {
+        console.log('Response completa:', response);
+        console.log('Response keys:', Object.keys(response));
+        
         // Extrai a lista correta baseado no tipo de pet
+        let racas: string[] = [];
         if (isDog) {
-          return response.racaCachorros || response.RacaCachorros || [];
+          racas = response.racaCachorros || response.RacaCachorros || [];
+          console.log('Raças de cachorro extraídas:', racas);
         } else if (isCat) {
-          return response.racaGatos || response.RacaGatos || [];
+          racas = response.racaGatos || response.RacaGatos || [];
+          console.log('Raças de gato extraídas:', racas);
         }
-        return [];
+        console.log('Array final a retornar:', racas);
+        return racas;
       })
     );
   }
