@@ -53,22 +53,29 @@ namespace Library.Aplication.Services
 
 
         public Task<(string, string)> BuscarGuidTokenENome(string token)
-        {
-            try
-            {
-                var handler = new JwtSecurityTokenHandler();
-                var jwtToken = handler.ReadJwtToken(token);
-                var userIdClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "sub")?.Value ?? string.Empty;
-                var idString = userIdClaim.Replace("id: ", "").Trim();
-                var emailClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "email")?.Value ?? string.Empty;
-                var email = emailClaim.Replace("email: ", "").Trim();
-                return Task.FromResult((idString, email));
+{
+    try
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao buscar o token", ex);
-            }
-        }
+        // Busca por ambos os formatos (curto e mapeado pelo .NET)
+        var userIdClaim = jwtToken.Claims
+            .FirstOrDefault(c => c.Type == "sub" || 
+                                 c.Type == JwtRegisteredClaimNames.Sub ||
+                                 c.Type == ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+
+        var emailClaim = jwtToken.Claims
+            .FirstOrDefault(c => c.Type == "email" || 
+                                 c.Type == JwtRegisteredClaimNames.Email ||
+                                 c.Type == ClaimTypes.Email)?.Value ?? string.Empty;
+
+        return Task.FromResult((userIdClaim, emailClaim));
+    }
+    catch (Exception ex)
+    {
+        throw new Exception("Erro ao buscar o token", ex);
+    }
+}
     }
 }
