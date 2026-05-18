@@ -1,0 +1,93 @@
+@model PetShop.Web.Models.Reserva
+
+@{
+    ViewData["Title"] = "Editar Reserva";
+}
+
+<h2 class="mb-4">Editar Reserva</h2>
+
+<form method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <div class="mb-3">
+
+        <label class="form-label">Pet</label>
+
+        <select asp-for="PetId"
+                class="form-select">
+
+            @foreach (var pet in ViewBag.Pets)
+            {
+                <option value="@pet.Id">
+                    @pet.Nome
+                </option>
+            }
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Serviço</label>
+
+        <select asp-for="Servico"
+                class="form-select">
+
+            <option>Banho</option>
+            <option>Tosa</option>
+            <option>Banho e Tosa</option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Data</label>
+
+        <input asp-for="Data"
+               type="date"
+               class="form-control" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Horário</label>
+
+        <select asp-for="Horario"
+                class="form-select">
+
+            <option>09:00</option>
+            <option>10:00</option>
+            <option>14:00</option>
+            <option>16:00</option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Status</label>
+
+        <select asp-for="Status"
+                class="form-select">
+
+            <option>Agendado</option>
+            <option>Confirmado</option>
+            <option>Finalizado</option>
+            <option>Cancelado</option>
+
+        </select>
+
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Salvar Alterações
+    </button>
+
+</form>

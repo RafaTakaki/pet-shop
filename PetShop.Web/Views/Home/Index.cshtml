@@ -2,16 +2,77 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center mt-5">
-    <h1 class="display-4">Bem-vindo ao Pet Shop</h1>
+<div class="hero mb-5">
 
-    <p class="lead">
-        Sistema de agendamento de banho e tosa.
-    </p>
+    <div class="row align-items-center">
 
-    <div class="mt-4">
-        <a href="/Schedule/Create" class="btn btn-primary btn-lg">
-            Agendar Serviço
-        </a>
+        <div class="col-md-8">
+
+            <h1 class="display-5 mb-3">
+                Agendamento online para Pet Shop
+            </h1>
+
+            <p class="lead">
+                Cadastre seus pets, escolha o serviço desejado e agende banho e tosa de forma rápida e simples.
+            </p>
+
+            <div class="mt-4">
+
+                <a href="/Schedule/Create" class="btn btn-primary btn-lg me-2">
+                    Agendar agora
+                </a>
+
+                <a href="/Services" class="btn btn-outline-light btn-lg">
+                    Ver serviços
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 text-center d-none d-md-block">
+
+            <h1 style="font-size: 90px;">🐶</h1>
+
+        </div>
+
     </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h4>Banho</h4>
+                <p class="text-muted">
+                    Serviços de higiene para manter seu pet limpo e confortável.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h4>Tosa</h4>
+                <p class="text-muted">
+                    Cuidados estéticos para deixar seu pet ainda mais bonito.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h4>Agenda Online</h4>
+                <p class="text-muted">
+                    Escolha datas e horários disponíveis sem precisar ligar para o pet shop.
+                </p>
+            </div>
+        </div>
+    </div>
+
 </div>

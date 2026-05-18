@@ -1,33 +1,60 @@
+@model List<PetShop.Web.Models.Reserva>
+
 @{
     ViewData["Title"] = "Agendamentos";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
+
     <h2>Agendamentos</h2>
-    <a href="/Schedule/Create" class="btn btn-primary">Novo Agendamento</a>
+
+    @if (Context.Session.GetString("Role") != "Admin")
+    {
+        <a href="/Schedule/Create" class="btn btn-primary">
+            Novo Agendamento
+        </a>
+    }
+
 </div>
 
 <table class="table table-hover">
+
     <thead>
         <tr>
             <th>Pet</th>
             <th>Serviço</th>
             <th>Data</th>
             <th>Horário</th>
+            <th>Status</th>
             <th>Ações</th>
         </tr>
     </thead>
 
     <tbody>
-        <tr>
-            <td>Rex</td>
-            <td>Banho</td>
-            <td>20/09/2026</td>
-            <td>14:00</td>
-            <td>
-                <a href="/Schedule/Edit/1" class="btn btn-warning btn-sm">Editar</a>
-                <a href="/Schedule/Delete/1" class="btn btn-danger btn-sm">Cancelar</a>
-            </td>
-        </tr>
+
+        @foreach (var reserva in Model)
+        {
+            <tr>
+                <td>@reserva.Pet?.Nome</td>
+                <td>@reserva.Servico</td>
+                <td>@reserva.Data.ToString("dd/MM/yyyy")</td>
+                <td>@reserva.Horario</td>
+                <td>@reserva.Status</td>
+
+                <td>
+                    <a href="/Schedule/Edit/@reserva.Id"
+                       class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+
+                    <a href="/Schedule/Delete/@reserva.Id"
+                       class="btn btn-danger btn-sm">
+                        Cancelar
+                    </a>
+                </td>
+            </tr>
+        }
+
     </tbody>
+
 </table>

@@ -1,21 +1,37 @@
+@model PetShop.Web.Models.Pet
+
 @{
     ViewData["Title"] = "Editar Pet";
 }
 
 <h2 class="mb-4">Editar Pet</h2>
 
-<form>
+<form method="post">
+
+    <input asp-for="Id" type="hidden" />
 
     <div class="mb-3">
         <label class="form-label">Nome</label>
-        <input class="form-control" value="Rex" />
+        <input asp-for="Nome" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Espécie</label>
+        <input asp-for="Especie" class="form-control" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Raça</label>
-        <input class="form-control" value="Labrador" />
+        <input asp-for="Raca" class="form-control" />
     </div>
 
-    <button class="btn btn-primary">Atualizar</button>
+    <div class="mb-3">
+        <label class="form-label">Idade</label>
+        <input asp-for="Idade" class="form-control" type="number" />
+    </div>
 
-</form> 
+    <button type="submit" class="btn btn-primary">
+        Atualizar
+    </button>
+
+</form>

@@ -1,58 +1,125 @@
+@model List<PetShop.Web.Models.Reserva>
+
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "Painel Administrativo";
 }
 
-<h2 class="mb-4">Dashboard Administrativo</h2>
+<h2 class="mb-4 section-title">Painel Administrativo</h2>
 
-<div class="row">
+<div class="row mb-4">
 
-    <div class="col-md-4 mb-4">
-        <div class="card bg-primary text-white shadow">
+    <div class="col-md-3 mb-3">
+        <div class="card card-dashboard shadow-sm bg-primary text-white">
             <div class="card-body">
-                <h5>Total de Pets</h5>
-                <h2>32</h2>
+                <h6>Tutores</h6>
+                <h2>@ViewBag.TotalTutores</h2>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4 mb-4">
-        <div class="card bg-success text-white shadow">
+    <div class="col-md-3 mb-3">
+        <div class="card card-dashboard shadow-sm bg-success text-white">
             <div class="card-body">
-                <h5>Agendamentos Hoje</h5>
-                <h2>18</h2>
+                <h6>Pets</h6>
+                <h2>@ViewBag.TotalPets</h2>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4 mb-4">
-        <div class="card bg-warning text-dark shadow">
+    <div class="col-md-3 mb-3">
+        <div class="card card-dashboard shadow-sm bg-warning text-dark">
             <div class="card-body">
-                <h5>Serviços Ativos</h5>
-                <h2>6</h2>
+                <h6>Reservas</h6>
+                <h2>@ViewBag.TotalReservas</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card card-dashboard shadow-sm bg-dark text-white">
+            <div class="card-body">
+                <h6>Reservas Hoje</h6>
+                <h2>@ViewBag.ReservasHoje</h2>
             </div>
         </div>
     </div>
 
 </div>
 
-<div class="row mt-4">
+<div class="table-card">
 
-    <div class="col-md-4 mb-3">
-        <a href="/Pets" class="btn btn-primary w-100 p-3">
-            Gerenciar Pets
-        </a>
-    </div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Últimos Agendamentos</h4>
 
-    <div class="col-md-4 mb-3">
-        <a href="/Services" class="btn btn-success w-100 p-3">
+        <a href="/Services" class="btn btn-primary btn-sm">
             Gerenciar Serviços
         </a>
     </div>
 
-    <div class="col-md-4 mb-3">
-        <a href="/Schedule" class="btn btn-warning w-100 p-3">
-            Gerenciar Agenda
-        </a>
-    </div>
+    <table class="table table-striped table-hover">
+
+        <thead>
+            <tr>
+                <th>Tutor</th>
+                <th>Pet</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var reserva in Model)
+            {
+                <tr>
+                    <td>@reserva.Pet?.Tutor?.Nome</td>
+                    <td>@reserva.Pet?.Nome</td>
+                    <td>@reserva.Servico</td>
+                    <td>@reserva.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@reserva.Horario</td>
+
+                    <td>
+                        @if (reserva.Status == "Agendado")
+                        {
+                            <span class="badge bg-warning text-dark">Agendado</span>
+                        }
+                        else if (reserva.Status == "Confirmado")
+                        {
+                            <span class="badge bg-primary">Confirmado</span>
+                        }
+                        else if (reserva.Status == "Finalizado")
+                        {
+                            <span class="badge bg-success">Finalizado</span>
+                        }
+                        else if (reserva.Status == "Cancelado")
+                        {
+                            <span class="badge bg-danger">Cancelado</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@reserva.Status</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a href="/Admin/Edit/@reserva.Id"
+                           class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+
+                        <a href="/Admin/Delete/@reserva.Id"
+                           class="btn btn-danger btn-sm">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
 
 </div>

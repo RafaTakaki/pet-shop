@@ -1,44 +1,131 @@
+@model PetShop.Web.Models.Reserva
+
 @{
     ViewData["Title"] = "Editar Agendamento";
 }
 
 <h2 class="mb-4">Editar Agendamento</h2>
 
-<form>
+@if (ViewBag.Erro != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Erro
+    </div>
+}
+
+<form method="post">
+
+    <input asp-for="Id" type="hidden" />
 
     <div class="mb-3">
         <label class="form-label">Pet</label>
-        <select class="form-select">
-            <option>Rex</option>
-            <option>Luna</option>
+
+        <select asp-for="PetId" class="form-select">
+
+            @foreach (var pet in ViewBag.Pets)
+            {
+                <option value="@pet.Id">
+                    @pet.Nome
+                </option>
+            }
+
         </select>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Serviço</label>
-        <select class="form-select">
-            <option>Banho</option>
-            <option>Tosa</option>
-            <option>Banho e Tosa</option>
+
+        <select asp-for="Servico" class="form-select">
+
+            @foreach (var servico in ViewBag.Servicos)
+            {
+                <option value="@servico.Nome">
+                    @servico.Nome - R$ @servico.Preco.ToString("N2")
+                </option>
+            }
+
         </select>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Data</label>
-        <input type="date" class="form-control" />
+
+        <input asp-for="Data"
+               type="date"
+               class="form-control"
+               id="dataInput" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Horário</label>
-        <select class="form-select">
-            <option>09:00</option>
-            <option>10:00</option>
-            <option>14:00</option>
-            <option>16:00</option>
+
+        <select asp-for="Horario"
+                class="form-select"
+                id="horarioSelect">
+
+            @foreach (var horario in ViewBag.Horarios)
+            {
+                <option value="@horario">
+                    @horario
+                </option>
+            }
+
         </select>
     </div>
 
-    <button class="btn btn-primary">Atualizar</button>
-    <a href="/Schedule" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary">
+        Atualizar
+    </button>
+
+    <a href="/Schedule" class="btn btn-secondary">
+        Cancelar
+    </a>
 
 </form>
+
+<script>
+async function carregarHorarios() {
+
+    const data =
+        document.getElementById("dataInput").value;
+
+    const reservaId =
+        document.getElementById("Id").value;
+
+    const response =
+        await fetch(`/Schedule/GetHorariosDisponiveisEdicao?data=${data}&reservaId=${reservaId}`);
+
+    const horarios =
+        await response.json();
+
+    const select =
+        document.getElementById("horarioSelect");
+
+    const horarioAtual =
+        "@Model.Horario";
+
+    select.innerHTML = "";
+
+    horarios.forEach(horario => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = horario;
+
+        option.text = horario;
+
+        if (horario === horarioAtual) {
+            option.selected = true;
+        }
+
+        select.appendChild(option);
+    });
+}
+
+document
+    .getElementById("dataInput")
+    .addEventListener("change", carregarHorarios);
+
+window.onload = carregarHorarios;
+</script>

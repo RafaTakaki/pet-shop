@@ -1,6 +1,23 @@
-<div class="alert alert-danger">
-    <h4>Deseja excluir este serviço?</h4>
+@model PetShop.Web.Models.Servico
+
+@{
+    ViewData["Title"] = "Excluir Serviço";
+}
+
+<h2 class="mb-4 text-danger">Excluir Serviço</h2>
+
+<div class="alert alert-warning">
+    Deseja realmente excluir o serviço <strong>@Model.Nome</strong>?
 </div>
 
-<button class="btn btn-danger">Excluir</button>
-<a href="/Services" class="btn btn-secondary">Cancelar</a>
+<form method="post" action="/Services/ConfirmDelete/@Model.Id">
+
+    <button type="submit" class="btn btn-danger">
+        Confirmar Exclusão
+    </button>
+
+    <a href="/Services" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>

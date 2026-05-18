@@ -1,30 +1,35 @@
+@model PetShop.Web.Models.Pet
+
 @{
     ViewData["Title"] = "Novo Pet";
 }
 
 <h2 class="mb-4">Cadastrar Pet</h2>
 
-<form>
+<form method="post">
 
     <div class="mb-3">
         <label class="form-label">Nome</label>
-        <input class="form-control" />
+        <input asp-for="Nome" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Espécie</label>
+        <input asp-for="Especie" class="form-control" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Raça</label>
-        <input class="form-control" />
+        <input asp-for="Raca" class="form-control" />
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Porte</label>
-        <select class="form-select">
-            <option>Pequeno</option>
-            <option>Médio</option>
-            <option>Grande</option>
-        </select>
+        <label class="form-label">Idade</label>
+        <input asp-for="Idade" class="form-control" type="number" />
     </div>
 
-    <button class="btn btn-success">Salvar</button>
+    <button type="submit" class="btn btn-success">
+        Salvar
+    </button>
 
 </form>

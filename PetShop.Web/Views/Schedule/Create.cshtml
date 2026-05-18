@@ -1,33 +1,115 @@
+@model PetShop.Web.Models.Reserva
+
 @{
-    ViewData["Title"] = "Agendamentos";
+    ViewData["Title"] = "Novo Agendamento";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Agendamentos</h2>
-    <a href="/Schedule/Create" class="btn btn-primary">Novo Agendamento</a>
-</div>
+<h2 class="mb-4">Novo Agendamento</h2>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Pet</th>
-            <th>Serviço</th>
-            <th>Data</th>
-            <th>Horário</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+@if (ViewBag.Erro != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Erro
+    </div>
+}
 
-    <tbody>
-        <tr>
-            <td>Rex</td>
-            <td>Banho</td>
-            <td>20/09/2026</td>
-            <td>14:00</td>
-            <td>
-                <a href="/Schedule/Edit/1" class="btn btn-warning btn-sm">Editar</a>
-                <a href="/Schedule/Delete/1" class="btn btn-danger btn-sm">Cancelar</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<form method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Pet</label>
+
+        <select asp-for="PetId" class="form-select">
+
+            @foreach (var pet in ViewBag.Pets)
+            {
+                <option value="@pet.Id">
+                    @pet.Nome
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Serviço</label>
+
+        <select asp-for="Servico" class="form-select">
+
+            @foreach (var servico in ViewBag.Servicos)
+            {
+                <option value="@servico.Nome">
+                    @servico.Nome - R$ @servico.Preco.ToString("N2")
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Data</label>
+
+        <input asp-for="Data"
+               type="date"
+               class="form-control"
+               id="dataInput" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Horário</label>
+
+        <select asp-for="Horario"
+                class="form-select"
+                id="horarioSelect">
+
+            @foreach (var horario in ViewBag.Horarios)
+            {
+                <option value="@horario">
+                    @horario
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Agendar
+    </button>
+
+    <a href="/Schedule" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>
+
+<script>
+document
+    .getElementById("dataInput")
+    .addEventListener("change", async function () {
+
+        const data = this.value;
+
+        const response =
+            await fetch(`/Schedule/GetHorariosDisponiveis?data=${data}`);
+
+        const horarios = await response.json();
+
+        const select =
+            document.getElementById("horarioSelect");
+
+        select.innerHTML = "";
+
+        horarios.forEach(horario => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = horario;
+
+            option.text = horario;
+
+            select.appendChild(option);
+
+        });
+
+    });
+</script>

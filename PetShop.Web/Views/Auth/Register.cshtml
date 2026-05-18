@@ -10,27 +10,40 @@
 
                 <h2 class="mb-4 text-center">Criar Conta</h2>
 
-                <form>
+                @if (ViewBag.Erro != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Erro
+                    </div>
+                }
+
+                <form method="post" action="/Auth/Register">
                     <div class="mb-3">
                         <label class="form-label">Nome</label>
-                        <input class="form-control" />
+                        <input name="nome" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" />
+                        <input type="email" name="email" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Senha</label>
-                        <input type="password" class="form-control" />
+                        <input type="password" name="senha" class="form-control" required />
                     </div>
 
-                    <button class="btn btn-success w-100">Cadastrar</button>
+                    <button type="submit" class="btn btn-success w-100">
+                        Cadastrar
+                    </button>
                 </form>
+
+                <div class="text-center mt-3">
+                    <a href="/Auth/Login">Já tenho conta</a>
+                </div>
 
             </div>
         </div>
 
     </div>
-</div>
+</div>  

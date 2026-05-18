@@ -10,19 +10,38 @@
 
                 <h2 class="text-center mb-4">Login</h2>
 
-                <form>
+                @if (ViewBag.Erro != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Erro
+                    </div>
+                }
+
+                <form method="post" action="/Auth/Login">
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" />
+                        <input type="email" name="email" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Senha</label>
-                        <input type="password" class="form-control" />
+                        <input type="password" name="senha" class="form-control" required />
                     </div>
 
-                    <button class="btn btn-primary w-100">Entrar</button>
+                    <button type="submit" class="btn btn-primary w-100">
+                        Entrar
+                    </button>
                 </form>
+
+                <div class="text-center mt-3">
+                    <a href="/Auth/Register">Criar uma conta</a>
+                </div>
+
+                <hr />
+
+                <small class="text-muted">
+                    Admin teste: admin@petshop.com / admin123
+                </small>
 
             </div>
         </div>

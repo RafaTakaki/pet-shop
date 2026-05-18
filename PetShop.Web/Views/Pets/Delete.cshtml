@@ -1,31 +1,23 @@
+@model PetShop.Web.Models.Pet
+
 @{
-    ViewData["Title"] = "Excluir Agendamento";
+    ViewData["Title"] = "Excluir Pet";
 }
 
-<h2 class="mb-4 text-danger">Excluir Agendamento</h2>
+<h2 class="mb-4 text-danger">Excluir Pet</h2>
 
 <div class="alert alert-warning">
-    Tem certeza que deseja excluir este agendamento?
+    Deseja realmente excluir o pet <strong>@Model.Nome</strong>?
 </div>
 
-<div class="card p-4 shadow-sm">
+<form method="post" action="/Pets/ConfirmDelete/@Model.Id">
 
-    <p><strong>Pet:</strong> Rex</p>
+    <button type="submit" class="btn btn-danger">
+        Confirmar Exclusão
+    </button>
 
-    <p><strong>Serviço:</strong> Banho e Tosa</p>
+    <a href="/Pets" class="btn btn-secondary">
+        Cancelar
+    </a>
 
-    <p><strong>Data:</strong> 15/05/2026</p>
-
-    <p><strong>Horário:</strong> 14:00</p>
-
-    <div class="mt-3">
-        <button class="btn btn-danger">
-            Confirmar Exclusão
-        </button>
-
-        <a href="/Schedule" class="btn btn-secondary">
-            Cancelar
-        </a>
-    </div>
-
-</div>
+</form>
