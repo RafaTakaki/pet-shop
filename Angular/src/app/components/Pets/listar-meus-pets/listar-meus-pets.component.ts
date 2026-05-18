@@ -18,7 +18,10 @@ export class ListarMeusPetsComponent implements OnInit {
   pets: CadastroPet[] = [];
   agendamentos: any[] = []; // specify the type if known
   petSelecionado: string | null = null;
-  tiposDePets: string[] = ['dog', 'cat'];
+  tiposDePets: { label: string; value: string }[] = [
+    { label: 'Cachorro', value: 'CACHORRO' },
+    { label: 'Gato', value: 'GATO' }
+  ];
   petFiltrado: string = '';
 
 

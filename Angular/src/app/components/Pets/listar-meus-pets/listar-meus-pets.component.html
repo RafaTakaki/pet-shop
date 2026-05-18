@@ -3,7 +3,7 @@
 
 <select class="Agendamento" [(ngModel)]="petFiltrado">
   <option class="Agendamento" value="">Todos</option>
-  <option class="Agendamento" *ngFor="let tipo of tiposDePets" [value]="tipo">{{ tipo }}</option>
+  <option class="Agendamento" *ngFor="let tipo of tiposDePets" [value]="tipo.value">{{ tipo.label }}</option>
 </select>
 
 <div class="container-lista-pets" *ngFor="let pet of pets | filterByTipo: petFiltrado">

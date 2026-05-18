@@ -59,7 +59,10 @@ export class ApiService {
   }
 
   buscaRacas(tipoPet: string): Observable<string[]> {
-    const url = tipoPet === 'Cachorro' ? this.apiUrlCachorro : this.apiUrlGato;
+    const t = (tipoPet || '').toLowerCase();
+    const isDog = t.includes('cachorro') || t.includes('dog');
+    const isCat = t.includes('gato') || t.includes('cat');
+    const url = isDog ? this.apiUrlCachorro : (isCat ? this.apiUrlGato : this.apiUrlGato);
     return this.http.get<string[]>(url);
   }
 
